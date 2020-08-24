@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      Instead of rendering our components in a list-item tag, 
+      create and return a new functional component called Todo which will render our todos. 
+      Make sure to provide a unique key to each todo!
+
+    -->
+
+    <script type="text/babel">
+
+      const ToDos = () => {
+        const [todos, setTodos] = React.useState([
+          {
+            text: "Drink Coffee",
+            isCompleted: false
+          },
+          {
+            text: "Eat a Whopper",
+            isCompleted: false
+          },
+          {
+            text: "Learn React!",
+            isCompleted: false
+          }
+        ])
+
+        {/* create Todo component below... */}
+          
+        {/* your code goes above this line... */}
+
+          return(
+          <div>
+             <h1>My Todo List</h1>
+             <ul>
+             {/* Use your new Todo component below to display the todo items */}
+               {
+                 todos.map((todo, index) => {
+                   return(
+                    <li key={index}>{todo.text}</li>
+                   ) 
+                 })
+               }
+             </ul>
+          </div>
+          )
+        }
+
+      ReactDOM.render(<ToDos />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

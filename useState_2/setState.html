@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      Using the React hook, useState, create 3 functions that will update the state variables 
+      to reflect more accurate information about your RBI experience. 
+      These functions will have to be set to the onClick attributes for the buttons we have 
+      provided in the JSX.
+
+      Remember to remove the comments from your onClicks when they are ready!
+
+    -->
+
+    <script type="text/babel">
+
+      const MyRBILife = () => {
+        const [studentName, setStudentName] = React.useState("Laz")
+        const [role, setRole] = React.useState("Web Developer")
+        const [favoriteLanguages, setFavoriteLanguages] = React.useState(["JavaScript", "Python", "Ruby"])
+
+        {/* create your functions below... */}
+          
+        {/* your code goes above this line... */}
+
+        return(
+        <div>
+          <p>My name is {studentName}!</p>
+          <button /*onClick={ your function }*/>Update Student Name </button>
+          <p>My Job at RBI is {role}.</p>
+          <button /*onClick={ your function }*/>Update Role</button>
+          <div style={{margin: "16px 0"}}>
+            These are my favorite coding languages:
+            <ul>
+              {
+                favoriteLanguages.map((language, index) => {
+                  return(
+                    <li key={index}>{language}</li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+          <button /*onClick={ your function }*/>Update Languages</button>
+        </div>
+        )
+      }
+
+      ReactDOM.render(<MyRBILife />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

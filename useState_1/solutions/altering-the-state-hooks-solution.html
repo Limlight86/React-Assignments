@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Practice</title>
+  <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <!--
+    INSTRUCTIONS:
+
+    Create two new button tags and corresponding functions. 
+    When clicked, the first one should decrease the count by one, 
+    The second should reset the count to zero.
+
+  -->
+  <script type="text/babel">
+    const Counter = () => {
+
+      const [count, setCount] = React.useState(0)
+
+      const incrementCount = () => {
+        setCount(count + 1)
+      }
+
+      const decrementCount = () => {
+        setCount(count - 1)
+      }
+
+      const resetCount = () => {
+        setCount(0)
+      }
+
+        return(
+          <div>
+            <p>You clicked {count} times</p>
+            <button onClick={incrementCount}>
+              Add 1
+            </button>
+            {/* your code goes below this line... */}
+            <button onClick={decrementCount}>
+              Subtract 1
+            </button>
+            <button onClick={resetCount}>
+              Reset Count
+            </button>
+          </div>
+        )
+      }
+
+    ReactDOM.render(<Counter />, document.getElementById('root'))
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      Using the React hook, useState, create two different state variables to make the following
+      code work. You will need to create 3 seperate variables. Notice the names of variables used 
+      in the provided JSX.
+
+    -->
+
+    <script type="text/babel">
+
+      const AboutMe = () => {
+
+        {/* create your state variables below... */}
+          const [name, setName] = React.useState("Laz")
+          const [age, setAge] = React.useState(34)
+          const [hobbies, setHobbies] = React.useState(["coding", "cooking", "music"])
+        {/* your code goes above this line... */}
+
+          return(
+          <div>
+            <p>My name is {name}!</p>
+            <p>I am {age} years old.</p>
+            These are some of my favorite hobbies:
+            <ul>
+              {
+                hobbies.map((hobby, index) => {
+                  return(
+                    <li key={index}>{hobby}</li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+          )
+        }
+
+      ReactDOM.render(<AboutMe />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

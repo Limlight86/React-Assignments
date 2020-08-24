@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      Using the React hook, useEffect, declare a useEffect that will utilize the JavaScript method,
+      setInterval(), in order to use update the `counter` state to be updated by 1 every 
+      second (1000ms) when the component first mounts to the browser. Additionally, 
+      have it console log the string "Counter Mounted!".
+
+      A button has been included in the initial code which has the ability to unmount the `Counter`
+      component. Using the useEffect hook that you just created, write some code that will stop the 
+      counter interval and console log "Counter Unmounted!". Using the button provided, you will
+      be able to toggle the counter component on and off. The goal is to show the console logs
+      between the mounting and unmounting and to toggle the interval with no errors present
+      in the console. If working, the counter will reset to 0 in between mountings.
+
+      Remember to remove the comments from your onClicks when they are ready!
+
+    -->
+
+    <script type="text/babel">
+
+      const Counter = () => {
+        const [counter, setCounter] = React.useState(0)
+        
+        {/* create your useEffect below */}
+        React.useEffect(() => {
+          console.log("Counter Mounted!");
+          const interval = setInterval(() => {
+            setCounter(counter => counter + 1);
+          }, 1000);
+          return () => {
+            console.log("Counter Unmounted!");
+            clearInterval(interval);
+          };
+        }, [setCounter]);
+        {/* your code goes above this line... */}
+
+        return(
+        <div>
+          <h1>Counter : {counter}</h1>
+        </div>
+        )
+      }
+
+      const ExampleUseEffect = () => {
+        const [showCounter, setShowCounter] = React.useState(true)
+        return(
+          <div>
+            {showCounter ? <Counter /> : null }
+            <button onClick={()=> setShowCounter(!showCounter)}>
+              {showCounter ? "Hide Counter" : "Show Counter"}
+            </button>
+          </div>  
+        )
+      }
+
+      ReactDOM.render(<ExampleUseEffect />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

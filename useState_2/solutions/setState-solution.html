@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      Using the React hook, useState, create 3 functions that will update the state variables 
+      to reflect more accurate information about your Wyncode experience. 
+      These functions will have to be set to the onClick attributes for the buttons we have 
+      provided in the JSX.
+
+      Remember to remove the comments from your onClicks when they are ready!
+
+    -->
+
+    <script type="text/babel">
+
+      const MyWyncodeLife = () => {
+        const [studentName, setStudentName] = React.useState("Laz")
+        const [cohort, setCohort] = React.useState(33)
+        const [favoriteLanguages, setFavoriteLanguages] = React.useState(["JavaScript", "Python", "Ruby"])
+
+        {/* create your functions below... */}
+          const handleStudentName = () => {
+            setStudentName("Whatever")
+          }
+
+          const handleCohort = () => {
+            setCohort(9001)
+          }
+
+          const handleLanguages = () => {
+            setFavoriteLanguages(["JavaScript", "JavaScript", "JavaScript"])
+          }
+        {/* your code goes above this line... */}
+
+        return(
+        <div>
+          <p>My name is {studentName}!</p>
+          <button onClick={ handleStudentName }>Update Student Name </button>
+          <p>I am a part of cohort {cohort}.</p>
+          <button onClick={ handleCohort }>Update Cohort</button>
+          <div style={{margin: "16px 0"}}>
+            These are my favorite coding languages:
+            <ul>
+              {
+                favoriteLanguages.map((language, index) => {
+                  return(
+                    <li key={index}>{language}</li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+          <button onClick={ handleLanguages }>Update Languages</button>
+        </div>
+        )
+      }
+
+      ReactDOM.render(<MyWyncodeLife />, document.getElementById('root'))
+    </script>
+  </body>
+</html>

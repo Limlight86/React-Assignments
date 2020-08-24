@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      Using the React hook, useEffect, declare a useEffect that will will update the state variable
+      `wordCount` whenever the state variable `word` is changed by submitting the form we have
+      provided for you. Include a console.log() with the word "Render" in your useEffect, 
+      so you can see everytime the state gets updated, which will trigger a re-render of your
+      component (this includes the initial render on component mount).
+
+      Hint: Your dependency array is important for this exercise!
+
+    -->
+
+    <script type="text/babel">
+
+      const RenderWord = () => {
+        const [inputString, setInputString] = React.useState("")
+        const [word, setWord] = React.useState("Change me")
+        const [wordCount, setWordCount] = React.useState(0)
+
+      {/* create your useEffect below */}
+
+        React.useEffect(()=>{
+            setWordCount(wordCount => wordCount + 1)
+        }, [word])
+        
+      {/* your code goes above this line... */}
+
+        const changeWord = async e => {
+          e.preventDefault()
+          await setWord(inputString)
+          setInputString("")
+        }
+
+        return(
+          <div>
+            <form onSubmit={e => changeWord(e)}>
+              <input 
+                type="text" 
+                value={inputString} 
+                onChange={e => setInputString(e.target.value)}
+              />
+              <button type="submit">Change the Word</button>
+            </form>
+            <h1>The word is: <u>{word}</u>!</h1>
+            <h1>It has been rendered {wordCount} {wordCount == 1 ? "time" : "times"}</h1>  
+          </div>
+        )
+      }
+
+      ReactDOM.render(<RenderWord />, document.getElementById('root'))
+    </script>
+  </body>
+</html>
